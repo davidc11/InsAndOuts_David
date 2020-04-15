@@ -1,29 +1,42 @@
 /*
-"Honoring one of Mexico's greatest, 'Chespirito'" by David Calixto
-Use the D-pad to alternate between 5 pictures altogether, including the base default picture
+Final iteration of the Midterm: "Honoring Mexico's Greatest" by David Calixto
+Use the Left & Right D-pad to shift between Master Array & People
+Click to shift between Array of People & Pictures 
 */
 int [] MasterArray = new int[3];
 int MasterArrayIndex = 0;
-PImage [] ChespiritoPic = new PImage[5];
+
 PImage InitialPic;
+
+PImage [] ChespiritoPic = new PImage[5];
 int ChespiritoPicIndex = 0;
+
 PImage [] VicentePic = new PImage[5];
 int VicentePicIndex = 0;
+
 PImage [] HugoPic = new PImage[5];
 int HugoPicIndex = 0;
+
 PFont font;
+
 String [] Quote = {"Tres de los mejores de mi Mexico Querido <3 \n Three of my beloved Mexico's best <3",
 "Descansa, Roberto ''Chespirito'' Gómez Bolaños. \n Gracias por todos los años de alegria \nFebruary 21, 1929 - November 28, 2014",
 "Vicente 'Chente' Fernández Gómez\n Por siempre ''El Rey De Las Rancheras'\n Forever the ''King of rancheras'''",
 "Hugo Sánchez Márquez \nUno de los maximo goleadores de mi Mexico Querido <3\nOne of the top Mexican goal scorers"};
-
 int QuoteIndex = 0;
+
 String [] Title = {"Mexico's Greatest","Roberto ''Chespirito'' Gómez Bolaños",
 "Vicente ''Chente'' Fernández Gómez", "Hugo Sánchez Márquez"};
 int TitleIndex = 0;
 
+String TitleArrayInstructions = "Use the Left & Right buttons\nto cycle between slides";
+String InbewteenArrayInstructions = "Click to shuffle\nbetween pictures";
+
+import processing.sound.*;
+SoundFile file;
+
 void setup(){
-  size(1080, 1080);
+  size(1080, 900);
   for (int i = 0; i<ChespiritoPic.length;i++){
     ChespiritoPic[i] = loadImage("ChespiritoPic" +i+ ".jpg");
   }
@@ -33,9 +46,14 @@ void setup(){
   for (int i = 0; i<HugoPic.length;i++){
     HugoPic[i] = loadImage("HugoPic" +i+ ".jpg");
   }
+  
   InitialPic = loadImage("InitialPic.jpg");
+  
   font = createFont("SourceCodePro-Regular.ttf", 28);
   textFont(font);
+  
+  file = new SoundFile(this, "Los Tigres Del Norte - Un Consentido De Dios.aiff");
+  file.play();
 }
 
 void draw(){
@@ -52,16 +70,16 @@ void draw(){
   else{
     TitleDisplayPage();
   }
-  printArray(MasterArray);
 }
 
+
 void HugoDisplayPage(){
-  background(#CB1919);
+  background(#5D5453);
   textAlign(CENTER);
   text(Title[TitleIndex],200,0,700,300);
   image(HugoPic[HugoPicIndex],125,35, 861, 528);
   text(Quote[QuoteIndex],200,575,700,300);
-  printArray(MasterArray);  
+  text(InbewteenArrayInstructions,205,800,700,300);
 }
 void VicenteDisplayPage(){
   background(#5D5453);
@@ -69,15 +87,15 @@ void VicenteDisplayPage(){
   text(Title[TitleIndex],225,0,700,300);
   image(VicentePic[VicentePicIndex],125,35, 861, 528);
   text(Quote[QuoteIndex],200,575,700,300);
-  printArray(MasterArray);
+  text(InbewteenArrayInstructions,205,800,700,300);
 }
 void ChespiritoDisplayPage(){
-  background(#5D55D8);
+  background(#5D5453);
   textAlign(CENTER);
   text(Title[TitleIndex],200,0,700,300);
   image(ChespiritoPic[ChespiritoPicIndex],125,35, 861, 528);
   text(Quote[QuoteIndex],200,575,700,300);
-  printArray(MasterArray);
+  text(InbewteenArrayInstructions,205,800,700,300);
 }
 void TitleDisplayPage(){
   background(#B7807E);
@@ -86,7 +104,7 @@ void TitleDisplayPage(){
   text(Title[TitleIndex],205,0,700,300);
   text(Quote[QuoteIndex],200,575,700,300);
   text(Quote[QuoteIndex],200,575,700,300);
-  printArray(MasterArray);
+  text(TitleArrayInstructions,205,800,700,300);
 }
 
 void mouseClicked(){
