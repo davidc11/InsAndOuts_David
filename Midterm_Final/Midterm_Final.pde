@@ -20,13 +20,15 @@ int HugoPicIndex = 0;
 PFont font;
 
 String [] Quote = {"Tres de los mejores de mi Mexico Querido <3 \n Three of my beloved Mexico's best <3",
-"Descansa, Roberto ''Chespirito'' Gómez Bolaños. \n Gracias por todos los años de alegria \nFebruary 21, 1929 - November 28, 2014",
 "Vicente 'Chente' Fernández Gómez\n Por siempre ''El Rey De Las Rancheras'\n Forever the ''King of rancheras'''",
-"Hugo Sánchez Márquez \nUno de los maximo goleadores de mi Mexico Querido <3\nOne of the top Mexican goal scorers"};
+"Descansa, Roberto ''Chespirito'' Gómez Bolaños. \n Gracias por todos los años de alegria \nFebruary 21, 1929 - November 28, 2014",
+"Hugo Sánchez Márquez \nUno de los maximo goleadores\nde mi Mexico Querido <3\nOne of Mexico's top goal scorers"};
 int QuoteIndex = 0;
 
-String [] Title = {"Mexico's Greatest","Roberto ''Chespirito'' Gómez Bolaños",
-"Vicente ''Chente'' Fernández Gómez", "Hugo Sánchez Márquez"};
+String [] Title = {"Mexico's Greatest",
+"Vicente ''Chente'' Fernández Gómez",
+"Roberto ''Chespirito'' Gómez Bolaños", 
+"Hugo Sánchez Márquez"};
 int TitleIndex = 0;
 
 String TitleArrayInstructions = "Use the Left & Right buttons\nto cycle between slides";
@@ -62,10 +64,10 @@ void draw(){
     HugoDisplayPage();
   }
   else if(MasterArrayIndex == 2){
-    VicenteDisplayPage();
+    ChespiritoDisplayPage();
   }
   else if(MasterArrayIndex == 1){
-    ChespiritoDisplayPage();
+    VicenteDisplayPage();
   }
   else{
     TitleDisplayPage();
@@ -108,18 +110,8 @@ void TitleDisplayPage(){
 }
 
 void mouseClicked(){
-//This is Chesperito's images
-  if(MasterArrayIndex == 1){
-    if(ChespiritoPicIndex == ChespiritoPic.length - 1){
-        ChespiritoPicIndex = 0;
-        
-      }
-    else{
-        ChespiritoPicIndex++;
-      }
-  }
 //This is Vicente's images
-  if(MasterArrayIndex == 2){
+  if(MasterArrayIndex == 1){
     if(VicentePicIndex == VicentePic.length - 1){
         VicentePicIndex = 0;
       }
@@ -127,6 +119,17 @@ void mouseClicked(){
         VicentePicIndex++;
       }
     }
+    
+//This is Chesperito's images
+  if(MasterArrayIndex == 2){
+    if(ChespiritoPicIndex == ChespiritoPic.length - 1){
+        ChespiritoPicIndex = 0;
+        
+      }
+    else{
+        ChespiritoPicIndex++;
+      }
+  }    
 //This is Hugo's images
   if(MasterArrayIndex == 3){
     if(HugoPicIndex == HugoPic.length-1){
