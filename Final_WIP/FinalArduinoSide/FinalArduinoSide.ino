@@ -22,11 +22,8 @@ void loop() {
   // put your main code here, to run repeatedly:
   sensorValue = analogRead(sensorPin);
   sensorValue = sensorValue / 4; //divide val by 4 or remap values to get byte-sized 0-255
-  //delay(100); // Wait 100 milliseconds
+  delay(100); // Wait 100 milliseconds
   //Serial.println(sensorValue);
-  if (Serial.available()) { 
-    sensorValue = Serial.read(); 
-  }
 
   if (sensorValue < 50) {
 
@@ -34,7 +31,7 @@ void loop() {
 
     digitalWrite(LED2, HIGH); 
 
-    //tone(Speakers, 2000);
+    tone(Speakers, 2000);
    // noTone(10);    
   }
 
@@ -44,7 +41,7 @@ void loop() {
 
     digitalWrite(LED2, LOW); 
 
-    //tone(Speakers, 2000);
+    noTone(10); 
     delay(0);    
   }
 
@@ -55,6 +52,7 @@ void loop() {
     digitalWrite(LED2, LOW); 
 
     //tone(Speakers, 2000);
+    noTone(10); 
     delay(0);    
   }
   Serial.write(sensorValue);  //to send binary data to Processing
